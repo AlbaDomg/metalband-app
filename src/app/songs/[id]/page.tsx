@@ -13,6 +13,7 @@ import StemTracker from '@/components/StemTracker';
 import TeleprompterModal from '@/components/TeleprompterModal';
 import AudioSection from '@/components/AudioSection';
 import FilesManager from '@/components/FilesManager';
+import RealtimeStatusBadge from '@/components/RealtimeStatusBadge';
 import {
   ArrowLeft,
   Check,
@@ -39,6 +40,9 @@ export default function SongDetailPage({
   const [isEditingLyrics, setIsEditingLyrics] = useState(false);
   const [savingLyrics, setSavingLyrics] = useState(false);
   const [teleprompterOpen, setTeleprompterOpen] = useState(false);
+  const [syncStatus, setSyncStatus] = useState<
+    'connecting' | 'subscribed' | 'error'
+  >('connecting');
 
   const syncLocalSong = (updated: Song) => {
     setSong(updated);
@@ -63,6 +67,7 @@ export default function SongDetailPage({
       }
       setSong(found);
       setLyricsDraft(found.lyrics || '');
+      setSyncStatus('subscribed');
 
       const bc = new BroadcastChannel('abyss-realtime');
       bc.onmessage = (ev) => {
@@ -121,7 +126,19 @@ export default function SongDetailPage({
           });
         }
       )
-      .subscribe();
+      .subscribe((status) => {
+        if (status === 'SUBSCRIBED') {
+          setSyncStatus('subscribed');
+        } else if (
+          status === 'CHANNEL_ERROR' ||
+          status === 'TIMED_OUT' ||
+          status === 'CLOSED'
+        ) {
+          setSyncStatus('error');
+        } else {
+          setSyncStatus('connecting');
+        }
+      });
 
     return () => {
       supabase.removeChannel(songChannel);
@@ -209,10 +226,7 @@ export default function SongDetailPage({
         </Link>
 
         <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1 rounded-full border border-emerald-900/60 bg-emerald-950/40 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-emerald-400">
-            <Radio className="h-2.5 w-2.5 animate-pulse" />
-            REALTIME ON
-          </span>
+          <RealtimeStatusBadge channelStatus={syncStatus} />
 
           <select
             value={song.status}

@@ -11,6 +11,7 @@ import {
 import { Song, SongStatus, StemStatus } from '@/types/database';
 import BandCalendar from '@/components/BandCalendar';
 import FilesManager from '@/components/FilesManager';
+import RealtimeStatusBadge from '@/components/RealtimeStatusBadge';
 import {
   Activity,
   Calendar,
@@ -67,6 +68,9 @@ export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('songs');
   const [songs, setSongs] = useState<Song[]>([]);
   const [loading, setLoading] = useState(true);
+  const [syncStatus, setSyncStatus] = useState<
+    'connecting' | 'subscribed' | 'error'
+  >('connecting');
   const [showNewModal, setShowNewModal] = useState(false);
   const [title, setTitle] = useState('');
   const [tuning, setTuning] = useState('Drop C');
@@ -82,6 +86,7 @@ export default function DashboardPage() {
         setSongs(INITIAL_DEMO_SONGS);
       }
       setLoading(false);
+      setSyncStatus('subscribed');
 
       const bc = new BroadcastChannel('abyss-realtime');
       bc.onmessage = (ev) => {
@@ -136,7 +141,19 @@ export default function DashboardPage() {
           }
         }
       )
-      .subscribe();
+      .subscribe((status) => {
+        if (status === 'SUBSCRIBED') {
+          setSyncStatus('subscribed');
+        } else if (
+          status === 'CHANNEL_ERROR' ||
+          status === 'TIMED_OUT' ||
+          status === 'CLOSED'
+        ) {
+          setSyncStatus('error');
+        } else {
+          setSyncStatus('connecting');
+        }
+      });
 
     return () => {
       supabase.removeChannel(channel);
@@ -220,10 +237,7 @@ export default function DashboardPage() {
               <h1 className="text-base font-black tracking-[0.2em] uppercase text-zinc-100">
                 METAL // STUDIO
               </h1>
-              <span className="inline-flex items-center gap-1 rounded-full border border-emerald-900/60 bg-emerald-950/40 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-emerald-400">
-                <Radio className="h-2.5 w-2.5 animate-pulse" />
-                LIVE SYNC
-              </span>
+              <RealtimeStatusBadge channelStatus={syncStatus} />
             </div>
             <p className="text-[11px] text-zinc-500 tracking-wider uppercase">
               Setlist, Calendario & Rider Hub

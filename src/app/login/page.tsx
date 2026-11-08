@@ -63,7 +63,7 @@ export default function LoginPage() {
               METAL // HUB
             </h1>
             <p className="text-xs uppercase tracking-widest text-zinc-500">
-              Extreme Metal Band Workspace
+              Metal Band Workspace
             </p>
           </div>
         </div>
