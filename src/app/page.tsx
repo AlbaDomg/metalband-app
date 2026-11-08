@@ -232,7 +232,7 @@ export default function DashboardPage() {
           <img
             src="/logo.png"
             alt="METAL // STUDIO Logo"
-            className="h-10 w-10 sm:h-11 sm:w-11 shrink-0 object-contain drop-shadow-[0_0_8px_rgba(249,115,22,0.35)]"
+            className="h-14 w-14 sm:h-16 sm:w-16 shrink-0 object-contain drop-shadow-[0_0_10px_rgba(249,115,22,0.45)]"
           />
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
