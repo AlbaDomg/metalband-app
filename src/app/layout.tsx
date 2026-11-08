@@ -5,6 +5,14 @@ export const metadata: Metadata = {
   title: 'METAL // Band Studio & Live Hub',
   description: 'Espacio colaborativo en tiempo real para producción, maquetación y directo.',
   manifest: '/manifest.json',
+  icons: {
+    icon: [
+      { url: '/logo.png', type: 'image/png', sizes: '512x512' },
+      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
+    ],
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',

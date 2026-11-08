@@ -55,9 +55,11 @@ export default function LoginPage() {
     <div className="flex min-h-screen flex-col justify-center px-6">
       <div className="border border-zinc-800/80 bg-zinc-950/90 p-7 rounded-xl shadow-2xl backdrop-blur-md">
         <div className="flex items-center gap-3 mb-6">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-950/70 border border-emerald-600/50 text-emerald-400">
-            <Flame className="h-5 w-5" />
-          </div>
+          <img
+            src="/logo.png"
+            alt="METAL // HUB Logo"
+            className="h-12 w-12 object-contain drop-shadow-[0_0_10px_rgba(249,115,22,0.4)]"
+          />
           <div>
             <h1 className="text-xl font-black tracking-[0.2em] uppercase text-zinc-100">
               METAL // HUB

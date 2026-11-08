@@ -229,9 +229,11 @@ export default function DashboardPage() {
       {/* Header Industrial */}
       <header className="flex items-center justify-between border-b border-zinc-800/80 pb-4 mb-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-950/80 border border-emerald-600/60 text-emerald-400">
-            <Flame className="h-5 w-5" />
-          </div>
+          <img
+            src="/logo.png"
+            alt="METAL // STUDIO Logo"
+            className="h-11 w-11 object-contain drop-shadow-[0_0_8px_rgba(249,115,22,0.35)]"
+          />
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-base font-black tracking-[0.2em] uppercase text-zinc-100">
