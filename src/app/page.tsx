@@ -40,7 +40,7 @@ const STATUS_BADGE: Record<SongStatus, { label: string; classes: string }> = {
   },
   finished: {
     label: 'MASTER READY',
-    classes: 'border-rose-800/80 bg-rose-950/60 text-rose-300',
+    classes: 'border-emerald-700/80 bg-emerald-950/60 text-emerald-300',
   },
 };
 
@@ -229,7 +229,7 @@ export default function DashboardPage() {
       {/* Header Industrial */}
       <header className="flex items-center justify-between border-b border-zinc-800/80 pb-4 mb-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-rose-950/80 border border-rose-800/60 text-rose-500">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-950/80 border border-emerald-600/60 text-emerald-400">
             <Flame className="h-5 w-5" />
           </div>
           <div>
@@ -261,7 +261,7 @@ export default function DashboardPage() {
           onClick={() => setActiveTab('songs')}
           className={`flex items-center justify-center gap-1.5 rounded-lg py-2.5 text-xs font-extrabold uppercase tracking-wider transition ${
             activeTab === 'songs'
-              ? 'bg-rose-800 text-white shadow-md shadow-rose-950/60'
+              ? 'bg-emerald-500 text-zinc-950 shadow-md shadow-emerald-950/60'
               : 'text-zinc-400 hover:text-zinc-200'
           }`}
         >
@@ -274,7 +274,7 @@ export default function DashboardPage() {
           onClick={() => setActiveTab('calendar')}
           className={`flex items-center justify-center gap-1.5 rounded-lg py-2.5 text-xs font-extrabold uppercase tracking-wider transition ${
             activeTab === 'calendar'
-              ? 'bg-rose-800 text-white shadow-md shadow-rose-950/60'
+              ? 'bg-emerald-500 text-zinc-950 shadow-md shadow-emerald-950/60'
               : 'text-zinc-400 hover:text-zinc-200'
           }`}
         >
@@ -287,7 +287,7 @@ export default function DashboardPage() {
           onClick={() => setActiveTab('files')}
           className={`flex items-center justify-center gap-1.5 rounded-lg py-2.5 text-xs font-extrabold uppercase tracking-wider transition ${
             activeTab === 'files'
-              ? 'bg-rose-800 text-white shadow-md shadow-rose-950/60'
+              ? 'bg-emerald-500 text-zinc-950 shadow-md shadow-emerald-950/60'
               : 'text-zinc-400 hover:text-zinc-200'
           }`}
         >
@@ -301,12 +301,12 @@ export default function DashboardPage() {
         <>
           <div className="mb-5 flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-[0.18em] text-zinc-400 flex items-center gap-1.5">
-              <Disc3 className="h-4 w-4 text-rose-500" />
+              <Disc3 className="h-4 w-4 text-emerald-400" />
               Temas del Proyecto ({songs.length})
             </span>
             <button
               onClick={() => setShowNewModal(true)}
-              className="flex items-center gap-1.5 rounded-lg bg-rose-800 hover:bg-rose-700 active:scale-95 px-3.5 py-2 text-xs font-bold uppercase tracking-widest text-white shadow-lg shadow-rose-950/50 transition"
+              className="flex items-center gap-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 active:scale-95 px-3.5 py-2 text-xs font-black uppercase tracking-widest text-zinc-950 shadow-lg shadow-emerald-950/50 transition"
             >
               <Plus className="h-4 w-4" />
               Nuevo Tema
@@ -342,7 +342,7 @@ export default function DashboardPage() {
                   <Link
                     key={song.id}
                     href={`/songs/${song.id}`}
-                    className="group block rounded-xl border border-zinc-800/80 bg-zinc-950/90 p-4 transition hover:border-rose-800/60 active:scale-[0.99]"
+                    className="group block rounded-xl border border-zinc-800/80 bg-zinc-950/90 p-4 transition hover:border-emerald-600/60 active:scale-[0.99]"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div>
@@ -351,11 +351,11 @@ export default function DashboardPage() {
                         >
                           {badge.label}
                         </span>
-                        <h2 className="text-base font-extrabold tracking-wide text-zinc-100 group-hover:text-rose-400 transition">
+                        <h2 className="text-base font-extrabold tracking-wide text-zinc-100 group-hover:text-emerald-400 transition">
                           {song.title}
                         </h2>
                       </div>
-                      <ChevronRight className="h-5 w-5 text-zinc-600 group-hover:text-rose-400 transition shrink-0 mt-1" />
+                      <ChevronRight className="h-5 w-5 text-zinc-600 group-hover:text-emerald-400 transition shrink-0 mt-1" />
                     </div>
 
                     <div className="mt-3 flex flex-wrap items-center gap-4 text-xs text-zinc-400">
@@ -364,7 +364,7 @@ export default function DashboardPage() {
                         {song.tuning}
                       </span>
                       <span className="flex items-center gap-1.5 font-mono">
-                        <Gauge className="h-3.5 w-3.5 text-rose-500" />
+                        <Gauge className="h-3.5 w-3.5 text-emerald-400" />
                         {song.tempo} BPM
                       </span>
                       <span className="flex items-center gap-1.5 font-mono ml-auto text-[11px] text-zinc-400">
@@ -375,7 +375,7 @@ export default function DashboardPage() {
 
                     <div className="mt-2.5 h-1.5 w-full overflow-hidden rounded-full bg-zinc-900">
                       <div
-                        className="h-full bg-gradient-to-r from-rose-700 via-violet-600 to-emerald-500 transition-all duration-500"
+                        className="h-full bg-gradient-to-r from-emerald-700 via-emerald-400 to-lime-400 transition-all duration-500"
                         style={{ width: `${progress}%` }}
                       />
                     </div>
@@ -424,7 +424,7 @@ export default function DashboardPage() {
                   required
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3.5 py-2.5 text-sm text-zinc-100 focus:border-rose-700 focus:outline-none"
+                  className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3.5 py-2.5 text-sm text-zinc-100 focus:border-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -438,7 +438,7 @@ export default function DashboardPage() {
                     value={tuning}
                     onChange={(e) => setTuning(e.target.value)}
                     placeholder="Drop F# / Drop C"
-                    className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3.5 py-2.5 text-sm font-mono text-zinc-100 focus:border-rose-700 focus:outline-none"
+                    className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3.5 py-2.5 text-sm font-mono text-zinc-100 focus:border-emerald-500 focus:outline-none"
                   />
                 </div>
                 <div>
@@ -451,14 +451,14 @@ export default function DashboardPage() {
                     max={300}
                     value={tempo}
                     onChange={(e) => setTempo(Number(e.target.value))}
-                    className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3.5 py-2.5 text-sm font-mono text-zinc-100 focus:border-rose-700 focus:outline-none"
+                    className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3.5 py-2.5 text-sm font-mono text-zinc-100 focus:border-emerald-500 focus:outline-none"
                   />
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full rounded-lg bg-rose-800 hover:bg-rose-700 py-3 text-xs font-bold uppercase tracking-[0.2em] text-white transition"
+                className="w-full rounded-lg bg-emerald-500 hover:bg-emerald-400 py-3 text-xs font-black uppercase tracking-[0.2em] text-zinc-950 transition"
               >
                 Crear y Sincronizar con la Banda
               </button>

@@ -208,7 +208,7 @@ export default function SongDetailPage({
   if (!song) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <Loader2 className="h-6 w-6 animate-spin text-rose-500" />
+        <Loader2 className="h-6 w-6 animate-spin text-emerald-400" />
       </div>
     );
   }
@@ -231,7 +231,7 @@ export default function SongDetailPage({
           <select
             value={song.status}
             onChange={(e) => handleUpdateStatus(e.target.value as SongStatus)}
-            className="rounded-lg border border-zinc-800 bg-zinc-900 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-rose-300 focus:border-rose-700 focus:outline-none"
+            className="rounded-lg border border-zinc-800 bg-zinc-900 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-emerald-300 focus:border-emerald-500 focus:outline-none"
           >
             <option value="idea">IDEA / RIFF</option>
             <option value="demo">PRE-PROD DEMO</option>
@@ -282,7 +282,7 @@ export default function SongDetailPage({
           </div>
 
           <div className="flex items-center gap-2.5 rounded-lg border border-zinc-800/80 bg-zinc-900/60 p-2.5">
-            <Gauge className="h-4 w-4 text-rose-500 shrink-0" />
+            <Gauge className="h-4 w-4 text-emerald-400 shrink-0" />
             <div>
               <span className="block text-[9px] uppercase tracking-widest text-zinc-500">
                 Tempo (BPM)
@@ -317,7 +317,7 @@ export default function SongDetailPage({
       <section className="rounded-xl border border-zinc-800/80 bg-zinc-950/90 p-4">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <FileText className="h-4 w-4 text-rose-500" />
+            <FileText className="h-4 w-4 text-emerald-400" />
             <h3 className="text-xs font-black uppercase tracking-[0.2em] text-zinc-300">
               Letras & Estructuras Vocales
             </h3>
@@ -333,7 +333,7 @@ export default function SongDetailPage({
               {savingLyrics ? (
                 <Loader2 className="h-3.5 w-3.5 animate-spin" />
               ) : isEditingLyrics ? (
-                <Save className="h-3.5 w-3.5 text-rose-400" />
+                <Save className="h-3.5 w-3.5 text-emerald-400" />
               ) : (
                 <Check className="h-3.5 w-3.5 text-emerald-400" />
               )}
@@ -343,7 +343,7 @@ export default function SongDetailPage({
             <button
               type="button"
               onClick={() => setTeleprompterOpen(true)}
-              className="flex items-center gap-1.5 rounded-lg bg-rose-800 hover:bg-rose-700 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white shadow-lg shadow-rose-950/60 transition"
+              className="flex items-center gap-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 px-3 py-1.5 text-[11px] font-black uppercase tracking-wider text-zinc-950 shadow-lg shadow-emerald-950/60 transition"
             >
               <Maximize2 className="h-3.5 w-3.5" />
               Modo Teleprompter
@@ -361,7 +361,7 @@ export default function SongDetailPage({
           }}
           onBlur={handleSaveLyrics}
           placeholder="[INTRO] - [ESTRIBILLO]... &#10;Escribe o pega la letra aquí."
-          className="w-full rounded-lg border border-zinc-800 bg-zinc-900/70 p-3.5 font-mono text-sm leading-relaxed text-zinc-100 placeholder-zinc-600 focus:border-rose-700 focus:outline-none"
+          className="w-full rounded-lg border border-zinc-800 bg-zinc-900/70 p-3.5 font-mono text-sm leading-relaxed text-zinc-100 placeholder-zinc-600 focus:border-emerald-500 focus:outline-none"
         />
       </section>
 

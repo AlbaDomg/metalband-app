@@ -274,7 +274,7 @@ export default function BandCalendar() {
       {/* Cabecera de Acción */}
       <div className="flex items-center justify-between">
         <span className="text-xs font-bold uppercase tracking-[0.18em] text-zinc-400 flex items-center gap-1.5">
-          <CalendarIcon className="h-4 w-4 text-rose-500" />
+          <CalendarIcon className="h-4 w-4 text-emerald-400" />
           Agenda & Fechas de la Banda ({events.length})
         </span>
         <button
@@ -283,7 +283,7 @@ export default function BandCalendar() {
             if (selectedDate) setEventDate(selectedDate);
             setShowModal(true);
           }}
-          className="flex items-center gap-1.5 rounded-lg bg-rose-800 hover:bg-rose-700 active:scale-95 px-3.5 py-2 text-xs font-bold uppercase tracking-widest text-white shadow-lg shadow-rose-950/50 transition"
+          className="flex items-center gap-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 active:scale-95 px-3.5 py-2 text-xs font-black uppercase tracking-widest text-zinc-950 shadow-lg shadow-emerald-950/50 transition"
         >
           <Plus className="h-4 w-4" />
           Añadir Fecha
@@ -350,9 +350,9 @@ export default function BandCalendar() {
                 }
                 className={`relative flex h-11 flex-col items-center justify-center rounded-lg border text-xs font-mono transition ${
                   isSelected
-                    ? 'border-rose-600 bg-rose-950/60 font-bold text-white'
+                    ? 'border-emerald-500 bg-emerald-950/60 font-bold text-white'
                     : isToday
-                    ? 'border-zinc-700 bg-zinc-900 font-bold text-rose-400'
+                    ? 'border-zinc-700 bg-zinc-900 font-bold text-emerald-400'
                     : 'border-zinc-900 bg-zinc-950 text-zinc-300 hover:border-zinc-800'
                 }`}
               >
@@ -382,7 +382,7 @@ export default function BandCalendar() {
             <button
               type="button"
               onClick={() => setSelectedDate(null)}
-              className="text-rose-400 hover:underline text-[11px] font-bold uppercase"
+              className="text-emerald-400 hover:underline text-[11px] font-bold uppercase"
             >
               Ver todas las fechas
             </button>
@@ -421,7 +421,7 @@ export default function BandCalendar() {
                       <Icon className="h-3 w-3" />
                       {meta.label}
                     </span>
-                    <span className="font-mono text-xs font-bold text-rose-400">
+                    <span className="font-mono text-xs font-bold text-emerald-400">
                       {ev.event_date}
                     </span>
                     {ev.event_time && (
@@ -492,7 +492,7 @@ export default function BandCalendar() {
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="Ej. Ensayo General Setlist / Concierto Sala X"
-                  className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3.5 py-2 text-sm text-zinc-100 focus:border-rose-700 focus:outline-none"
+                  className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3.5 py-2 text-sm text-zinc-100 focus:border-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -506,7 +506,7 @@ export default function BandCalendar() {
                     required
                     value={eventDate}
                     onChange={(e) => setEventDate(e.target.value)}
-                    className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs font-mono text-zinc-100 focus:border-rose-700 focus:outline-none"
+                    className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs font-mono text-zinc-100 focus:border-emerald-500 focus:outline-none"
                   />
                 </div>
                 <div>
@@ -517,7 +517,7 @@ export default function BandCalendar() {
                     type="time"
                     value={eventTime}
                     onChange={(e) => setEventTime(e.target.value)}
-                    className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs font-mono text-zinc-100 focus:border-rose-700 focus:outline-none"
+                    className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs font-mono text-zinc-100 focus:border-emerald-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -532,7 +532,7 @@ export default function BandCalendar() {
                     onChange={(e) =>
                       setCategory(e.target.value as EventCategory)
                     }
-                    className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs font-semibold text-zinc-100 focus:border-rose-700 focus:outline-none"
+                    className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs font-semibold text-zinc-100 focus:border-emerald-500 focus:outline-none"
                   >
                     <option value="rehearsal">Ensayo</option>
                     <option value="gig">Concierto / Directo</option>
@@ -550,7 +550,7 @@ export default function BandCalendar() {
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
                     placeholder="Local 4 / Estudio..."
-                    className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs text-zinc-100 focus:border-rose-700 focus:outline-none"
+                    className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs text-zinc-100 focus:border-emerald-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -564,13 +564,13 @@ export default function BandCalendar() {
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="Llevar in-ears, probar intro por PA..."
-                  className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs text-zinc-100 focus:border-rose-700 focus:outline-none"
+                  className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs text-zinc-100 focus:border-emerald-500 focus:outline-none"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full rounded-lg bg-rose-800 hover:bg-rose-700 py-3 text-xs font-bold uppercase tracking-[0.2em] text-white transition"
+                className="w-full rounded-lg bg-emerald-500 hover:bg-emerald-400 py-3 text-xs font-black uppercase tracking-[0.2em] text-zinc-950 transition"
               >
                 Guardar y Sincronizar con la Banda
               </button>

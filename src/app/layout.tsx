@@ -27,9 +27,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className="dark">
-      <body className="min-h-screen bg-[#050507] text-zinc-100 selection:bg-rose-900 selection:text-white">
+      <body className="min-h-screen bg-[#050507] text-zinc-100 selection:bg-emerald-500 selection:text-zinc-950">
         {/* Textura ambiental sutil superior */}
-        <div className="pointer-events-none fixed inset-x-0 top-0 h-64 bg-gradient-to-b from-rose-950/15 via-violet-950/5 to-transparent z-0" />
+        <div className="pointer-events-none fixed inset-x-0 top-0 h-64 bg-gradient-to-b from-emerald-950/20 via-emerald-950/5 to-transparent z-0" />
         <main className="relative z-10 mx-auto max-w-2xl min-h-screen pb-20">
           {children}
         </main>

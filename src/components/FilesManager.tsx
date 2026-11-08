@@ -6,11 +6,8 @@ import { BandFile, FileCategory } from '@/types/database';
 import {
   CheckCircle2,
   Download,
-  ExternalLink,
   FileArchive,
-  FileCode2,
   FileImage,
-  FileSpreadsheet,
   FileText,
   FolderOpen,
   Loader2,
@@ -34,7 +31,7 @@ const FILE_CATEGORY_META: Record<
 > = {
   rider: {
     label: 'RIDER TÉCNICO / STAGE PLOT',
-    badge: 'border-rose-800/80 bg-rose-950/60 text-rose-300',
+    badge: 'border-emerald-700/80 bg-emerald-950/60 text-emerald-300',
   },
   logo_visual: {
     label: 'LOGOS / BACKGROUND / VISUAL',
@@ -300,7 +297,7 @@ export default function FilesManager({
     <section className="rounded-xl border border-zinc-800/80 bg-zinc-950/90 p-4 space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h3 className="text-xs font-black uppercase tracking-[0.2em] text-zinc-300 flex items-center gap-2">
-          <FolderOpen className="h-4 w-4 text-rose-500" />
+          <FolderOpen className="h-4 w-4 text-emerald-400" />
           {sectionTitle ||
             (songId
               ? 'Archivos Adjuntos del Tema (Tabs, Presets, Visuales, PDF)'
@@ -325,13 +322,13 @@ export default function FilesManager({
                 ? 'Nombre (ej. Tab Guitar Pro v2 / Visual Intro)'
                 : 'Nombre (ej. Rider Técnico 2026 / Logo Vectorial PNG)'
             }
-            className="sm:col-span-2 rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs text-zinc-100 focus:border-rose-700 focus:outline-none disabled:opacity-50"
+            className="sm:col-span-2 rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs text-zinc-100 focus:border-emerald-500 focus:outline-none disabled:opacity-50"
           />
           <select
             value={category}
             disabled={uploading}
             onChange={(e) => setCategory(e.target.value as FileCategory)}
-            className="rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs font-semibold text-zinc-200 focus:border-rose-700 focus:outline-none disabled:opacity-50"
+            className="rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs font-semibold text-zinc-200 focus:border-emerald-500 focus:outline-none disabled:opacity-50"
           >
             <option value="rider">Rider Técnico / Stage Plot</option>
             <option value="logo_visual">Logos / Background / Visual</option>
@@ -353,7 +350,7 @@ export default function FilesManager({
           <button
             type="submit"
             disabled={uploading || !selectedFile}
-            className="flex items-center justify-center gap-2 rounded-lg bg-rose-800 hover:bg-rose-700 px-4 py-2.5 text-xs font-bold uppercase tracking-widest text-white transition disabled:opacity-50"
+            className="flex items-center justify-center gap-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 px-4 py-2.5 text-xs font-black uppercase tracking-widest text-zinc-950 transition disabled:opacity-50"
           >
             {uploading ? (
               <>
@@ -371,10 +368,10 @@ export default function FilesManager({
 
         {/* Barra de carga visual */}
         {uploading && (
-          <div className="mt-2 rounded-xl border border-rose-900/60 bg-zinc-900/90 p-3.5">
+          <div className="mt-2 rounded-xl border border-emerald-800/60 bg-zinc-900/90 p-3.5">
             <div className="flex items-center justify-between text-xs mb-2">
-              <span className="flex items-center gap-2 font-bold text-rose-300">
-                <Radio className="h-3.5 w-3.5 animate-pulse text-rose-500" />
+              <span className="flex items-center gap-2 font-bold text-emerald-300">
+                <Radio className="h-3.5 w-3.5 animate-pulse text-emerald-400" />
                 {uploadStage}
               </span>
               <span className="font-mono text-xs font-extrabold text-zinc-100">
@@ -384,7 +381,7 @@ export default function FilesManager({
 
             <div className="h-2.5 w-full overflow-hidden rounded-full bg-zinc-950 border border-zinc-800 p-0.5">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-rose-800 via-rose-500 to-violet-500 transition-all duration-200 ease-out"
+                className="h-full rounded-full bg-gradient-to-r from-emerald-600 via-emerald-400 to-lime-400 transition-all duration-200 ease-out"
                 style={{ width: `${uploadProgress}%` }}
               />
             </div>
@@ -426,7 +423,7 @@ export default function FilesManager({
               onClick={() => setActiveFilter(key)}
               className={`rounded-lg border px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider shrink-0 transition ${
                 activeFilter === key
-                  ? 'border-rose-700 bg-rose-950/60 text-white'
+                  ? 'border-emerald-500 bg-emerald-950/60 text-emerald-300'
                   : 'border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-zinc-200'
               }`}
             >
@@ -451,7 +448,7 @@ export default function FilesManager({
             return (
               <div
                 key={file.id}
-                className="flex items-center justify-between gap-3 rounded-xl border border-zinc-800/80 bg-zinc-900/50 p-3 hover:border-zinc-700 transition"
+                className="flex items-center justify-between gap-3 rounded-xl border border-zinc-800/80 bg-zinc-950/50 p-3 hover:border-zinc-700 transition"
               >
                 <div className="flex items-center gap-3 min-w-0">
                   {isImage ? (
@@ -461,7 +458,7 @@ export default function FilesManager({
                       className="h-11 w-11 rounded-lg object-cover border border-zinc-800 shrink-0 bg-zinc-950"
                     />
                   ) : (
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-950 text-rose-500">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-950 text-emerald-400">
                       {file.category === 'logo_visual' ? (
                         <FileImage className="h-5 w-5" />
                       ) : file.category === 'preset_stem' ? (
@@ -495,7 +492,7 @@ export default function FilesManager({
                     rel="noopener noreferrer"
                     download={file.file_name}
                     title="Abrir o Descargar"
-                    className="flex items-center gap-1 rounded-lg border border-zinc-700 bg-zinc-900 hover:bg-rose-800 hover:border-rose-700 px-2.5 py-2 text-[10px] font-bold uppercase tracking-wider text-zinc-200 hover:text-white transition"
+                    className="flex items-center gap-1 rounded-lg border border-zinc-700 bg-zinc-900 hover:bg-emerald-500 hover:border-emerald-400 px-2.5 py-2 text-[10px] font-black uppercase tracking-wider text-zinc-200 hover:text-zinc-950 transition"
                   >
                     <Download className="h-3.5 w-3.5" />
                     <span className="hidden sm:inline">Descargar</span>
@@ -517,4 +514,3 @@ export default function FilesManager({
     </section>
   );
 }
-

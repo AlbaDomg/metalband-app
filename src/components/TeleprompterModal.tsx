@@ -55,7 +55,7 @@ export default function TeleprompterModal({
       {/* Barra de control superior fija de alto contraste */}
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-zinc-800 bg-zinc-950 px-4 py-3">
         <div>
-          <span className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-rose-500 block">
+          <span className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-emerald-400 block">
             LIVE TELEPROMPTER MODE
           </span>
           <h2 className="text-base font-black uppercase tracking-wider text-white">
@@ -71,7 +71,7 @@ export default function TeleprompterModal({
               {tuning}
             </span>
             <span className="flex items-center gap-1 rounded bg-zinc-900 px-2 py-1 border border-zinc-800">
-              <Gauge className="h-3.5 w-3.5 text-rose-500" />
+              <Gauge className="h-3.5 w-3.5 text-emerald-400" />
               {tempo} BPM
             </span>
           </div>
@@ -82,7 +82,7 @@ export default function TeleprompterModal({
             onClick={() => setAutoScroll(!autoScroll)}
             className={`flex items-center gap-1.5 rounded-lg border px-3 py-2 text-xs font-bold uppercase tracking-wider transition ${
               autoScroll
-                ? 'border-rose-600 bg-rose-900/60 text-white'
+                ? 'border-emerald-500 bg-emerald-900/60 text-emerald-200'
                 : 'border-zinc-800 bg-zinc-900 text-zinc-300'
             }`}
           >
@@ -122,7 +122,7 @@ export default function TeleprompterModal({
           <button
             type="button"
             onClick={onClose}
-            className="flex items-center gap-1 rounded-lg bg-rose-800 hover:bg-rose-700 px-3 py-2 text-xs font-bold uppercase tracking-widest text-white"
+            className="flex items-center gap-1 rounded-lg bg-emerald-500 hover:bg-emerald-400 px-3 py-2 text-xs font-black uppercase tracking-widest text-zinc-950"
           >
             <Minimize2 className="h-4 w-4" />
             Salir

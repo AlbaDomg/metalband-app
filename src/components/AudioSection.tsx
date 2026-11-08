@@ -463,7 +463,7 @@ export default function AudioSection({ songId }: AudioSectionProps) {
       {/* Tarjeta de Subida de Audio */}
       <div className="rounded-xl border border-zinc-800/80 bg-zinc-950/90 p-4">
         <h3 className="text-xs font-black uppercase tracking-[0.2em] text-zinc-300 mb-3 flex items-center gap-2">
-          <Upload className="h-4 w-4 text-rose-500" />
+          <Upload className="h-4 w-4 text-emerald-400" />
           Subir Pista / Maqueta (WAV, MP3, M4A)
         </h3>
 
@@ -476,13 +476,13 @@ export default function AudioSection({ songId }: AudioSectionProps) {
               placeholder="Ej. Riff Breakdown v2"
               value={audioTitle}
               onChange={(e) => setAudioTitle(e.target.value)}
-              className="sm:col-span-2 rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs text-zinc-100 focus:border-rose-700 focus:outline-none disabled:opacity-50"
+              className="sm:col-span-2 rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs text-zinc-100 focus:border-emerald-500 focus:outline-none disabled:opacity-50"
             />
             <select
               value={audioType}
               disabled={uploading}
               onChange={(e) => setAudioType(e.target.value as AudioType)}
-              className="rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs font-semibold text-zinc-200 focus:border-rose-700 focus:outline-none disabled:opacity-50"
+              className="rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs font-semibold text-zinc-200 focus:border-emerald-500 focus:outline-none disabled:opacity-50"
             >
               <option value="riff">Riff / Idea</option>
               <option value="vocal_take">Toma Vocal</option>
@@ -503,7 +503,7 @@ export default function AudioSection({ songId }: AudioSectionProps) {
             <button
               type="submit"
               disabled={uploading || !selectedFile}
-              className="flex items-center justify-center gap-2 rounded-lg bg-rose-800 hover:bg-rose-700 px-4 py-2.5 text-xs font-bold uppercase tracking-widest text-white transition disabled:opacity-50"
+              className="flex items-center justify-center gap-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 px-4 py-2.5 text-xs font-black uppercase tracking-widest text-zinc-950 transition disabled:opacity-50"
             >
               {uploading ? (
                 <>
@@ -521,10 +521,10 @@ export default function AudioSection({ songId }: AudioSectionProps) {
 
           {/* Barra de Progreso Industrial en Tiempo Real durante la Subida */}
           {uploading && (
-            <div className="mt-3 rounded-xl border border-rose-900/60 bg-zinc-900/90 p-3.5 shadow-inner">
+            <div className="mt-3 rounded-xl border border-emerald-800/60 bg-zinc-900/90 p-3.5 shadow-inner">
               <div className="flex items-center justify-between text-xs mb-2">
-                <span className="flex items-center gap-2 font-bold text-rose-300">
-                  <Radio className="h-3.5 w-3.5 animate-pulse text-rose-500" />
+                <span className="flex items-center gap-2 font-bold text-emerald-300">
+                  <Radio className="h-3.5 w-3.5 animate-pulse text-emerald-400" />
                   {uploadStage}
                 </span>
                 <span className="font-mono text-xs font-extrabold text-zinc-100">
@@ -535,7 +535,7 @@ export default function AudioSection({ songId }: AudioSectionProps) {
               {/* Barra animada */}
               <div className="h-2.5 w-full overflow-hidden rounded-full bg-zinc-950 border border-zinc-800 p-0.5">
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-rose-800 via-rose-500 to-violet-500 transition-all duration-200 ease-out"
+                  className="h-full rounded-full bg-gradient-to-r from-emerald-600 via-emerald-400 to-lime-400 transition-all duration-200 ease-out"
                   style={{ width: `${uploadProgress}%` }}
                 />
               </div>
@@ -586,11 +586,11 @@ export default function AudioSection({ songId }: AudioSectionProps) {
                     }}
                     className={`flex items-center gap-2 shrink-0 rounded-lg border px-3 py-2 text-left transition ${
                       isSelected
-                        ? 'border-rose-600 bg-rose-950/40 text-white'
+                        ? 'border-emerald-500 bg-emerald-950/40 text-white'
                         : 'border-zinc-800 bg-zinc-900/60 text-zinc-400 hover:border-zinc-700'
                     }`}
                   >
-                    <FileAudio className="h-4 w-4 text-rose-500 shrink-0" />
+                    <FileAudio className="h-4 w-4 text-emerald-400 shrink-0" />
                     <div>
                       <p className="text-xs font-bold leading-none">
                         {track.title}
@@ -627,7 +627,7 @@ export default function AudioSection({ songId }: AudioSectionProps) {
                 <button
                   type="button"
                   onClick={togglePlay}
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-rose-700 hover:bg-rose-600 text-white shadow-lg shadow-rose-950 transition active:scale-95"
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-emerald-500 hover:bg-emerald-400 text-zinc-950 shadow-lg shadow-emerald-950 transition active:scale-95"
                 >
                   {isPlaying ? (
                     <Pause className="h-5 w-5" />
@@ -641,7 +641,7 @@ export default function AudioSection({ songId }: AudioSectionProps) {
                     <span className="font-bold text-zinc-100">
                       {activeAudio.title}
                     </span>
-                    <span className="font-mono text-rose-400">
+                    <span className="font-mono text-emerald-400">
                       {formatSeconds(currentTime)} / {formatSeconds(duration)}
                     </span>
                   </div>
@@ -654,7 +654,7 @@ export default function AudioSection({ songId }: AudioSectionProps) {
                       step={0.1}
                       value={currentTime}
                       onChange={(e) => seekToSecond(Number(e.target.value))}
-                      className="w-full accent-rose-600 cursor-pointer h-2 bg-zinc-800 rounded-lg"
+                      className="w-full accent-emerald-400 cursor-pointer h-2 bg-zinc-800 rounded-lg"
                     />
                   </div>
                 </div>
@@ -664,10 +664,10 @@ export default function AudioSection({ songId }: AudioSectionProps) {
                 <button
                   type="button"
                   onClick={() => setLockedTimestamp(Math.floor(currentTime))}
-                  className="flex items-center gap-1 rounded-lg border border-rose-800/70 bg-rose-950/50 px-2.5 py-2 font-mono text-xs font-bold text-rose-300 shrink-0"
+                  className="flex items-center gap-1 rounded-lg border border-emerald-700/70 bg-emerald-950/50 px-2.5 py-2 font-mono text-xs font-bold text-emerald-300 shrink-0"
                   title="Fijar segundo actual"
                 >
-                  <Clock className="h-3.5 w-3.5 text-rose-500" />
+                  <Clock className="h-3.5 w-3.5 text-emerald-400" />
                   {formatSeconds(
                     lockedTimestamp !== null ? lockedTimestamp : currentTime
                   )}
@@ -683,12 +683,12 @@ export default function AudioSection({ songId }: AudioSectionProps) {
                     }
                   }}
                   onChange={(e) => setCommentText(e.target.value)}
-                  className="flex-1 rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-2 text-xs text-zinc-100 placeholder-zinc-500 focus:border-rose-700 focus:outline-none"
+                  className="flex-1 rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-2 text-xs text-zinc-100 placeholder-zinc-500 focus:border-emerald-500 focus:outline-none"
                 />
 
                 <button
                   type="submit"
-                  className="flex items-center justify-center rounded-lg bg-rose-800 hover:bg-rose-700 px-3.5 py-2 text-white transition"
+                  className="flex items-center justify-center rounded-lg bg-emerald-500 hover:bg-emerald-400 px-3.5 py-2 text-zinc-950 transition"
                 >
                   <Send className="h-4 w-4" />
                 </button>
@@ -710,9 +710,9 @@ export default function AudioSection({ songId }: AudioSectionProps) {
                       <div
                         key={comment.id}
                         onClick={() => seekToSecond(comment.timestamp_seconds)}
-                        className="group flex items-start gap-2.5 rounded-lg border border-zinc-800/80 bg-zinc-950/80 p-2.5 cursor-pointer hover:border-rose-700/70 hover:bg-zinc-900 transition"
+                        className="group flex items-start gap-2.5 rounded-lg border border-zinc-800/80 bg-zinc-950/80 p-2.5 cursor-pointer hover:border-emerald-600/70 hover:bg-zinc-900 transition"
                       >
-                        <span className="inline-flex items-center gap-1 rounded bg-rose-950/80 border border-rose-800/70 px-2 py-0.5 font-mono text-xs font-bold text-rose-300 shrink-0 group-hover:bg-rose-700 group-hover:text-white transition">
+                        <span className="inline-flex items-center gap-1 rounded bg-emerald-950/80 border border-emerald-700/70 px-2 py-0.5 font-mono text-xs font-bold text-emerald-300 shrink-0 group-hover:bg-emerald-500 group-hover:text-zinc-950 transition">
                           <Play className="h-2.5 w-2.5 fill-current" />
                           {formatSeconds(comment.timestamp_seconds)}
                         </span>

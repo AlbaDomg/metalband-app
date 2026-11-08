@@ -55,7 +55,7 @@ export default function LoginPage() {
     <div className="flex min-h-screen flex-col justify-center px-6">
       <div className="border border-zinc-800/80 bg-zinc-950/90 p-7 rounded-xl shadow-2xl backdrop-blur-md">
         <div className="flex items-center gap-3 mb-6">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-rose-950/60 border border-rose-800/50 text-rose-500">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-950/70 border border-emerald-600/50 text-emerald-400">
             <Flame className="h-5 w-5" />
           </div>
           <div>
@@ -81,7 +81,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="vocalist@band.metal"
-                className="w-full rounded-lg border border-zinc-800 bg-zinc-900/90 pl-10 pr-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:border-rose-700 focus:outline-none"
+                className="w-full rounded-lg border border-zinc-800 bg-zinc-900/90 pl-10 pr-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:border-emerald-500 focus:outline-none"
               />
             </div>
           </div>
@@ -99,7 +99,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full rounded-lg border border-zinc-800 bg-zinc-900/90 pl-10 pr-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:border-rose-700 focus:outline-none"
+                className="w-full rounded-lg border border-zinc-800 bg-zinc-900/90 pl-10 pr-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:border-emerald-500 focus:outline-none"
               />
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2 rounded-lg bg-rose-800 hover:bg-rose-700 active:bg-rose-900 py-3 text-xs font-bold uppercase tracking-[0.2em] text-white transition disabled:opacity-50"
+            className="w-full flex items-center justify-center gap-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 active:bg-emerald-600 py-3 text-xs font-black uppercase tracking-[0.2em] text-zinc-950 shadow-lg shadow-emerald-950/60 transition disabled:opacity-50"
           >
             {loading && <Loader2 className="h-4 w-4 animate-spin" />}
             {isSignUp ? 'Registrar Miembro' : 'Entrar al Local'}
@@ -136,7 +136,7 @@ export default function LoginPage() {
               setErrorMsg(null);
               setInfoMsg(null);
             }}
-            className="text-xs text-zinc-400 hover:text-rose-400 transition"
+            className="text-xs text-zinc-400 hover:text-emerald-400 transition"
           >
             {isSignUp
               ? '¿Ya tienes cuenta en la banda? Inicia sesión'
