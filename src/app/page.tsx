@@ -227,21 +227,21 @@ export default function DashboardPage() {
       )}
 
       {/* Header Industrial */}
-      <header className="flex items-center justify-between border-b border-zinc-800/80 pb-4 mb-4">
-        <div className="flex items-center gap-3">
+      <header className="flex items-center justify-between gap-3 border-b border-zinc-800/80 pb-4 mb-4">
+        <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
           <img
             src="/logo.png"
             alt="METAL // STUDIO Logo"
-            className="h-11 w-11 object-contain drop-shadow-[0_0_8px_rgba(249,115,22,0.35)]"
+            className="h-10 w-10 sm:h-11 sm:w-11 shrink-0 object-contain drop-shadow-[0_0_8px_rgba(249,115,22,0.35)]"
           />
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-base font-black tracking-[0.2em] uppercase text-zinc-100">
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <h1 className="text-sm sm:text-base font-black tracking-[0.14em] sm:tracking-[0.2em] uppercase text-zinc-100 whitespace-nowrap">
                 METAL // STUDIO
               </h1>
               <RealtimeStatusBadge channelStatus={syncStatus} />
             </div>
-            <p className="text-[11px] text-zinc-500 tracking-wider uppercase">
+            <p className="mt-0.5 text-[10px] sm:text-[11px] text-zinc-400 tracking-wider uppercase truncate">
               Setlist, Calendario & Rider Hub
             </p>
           </div>
@@ -250,7 +250,7 @@ export default function DashboardPage() {
         <button
           onClick={handleSignOut}
           title="Cambiar usuario / Login"
-          className="rounded-lg border border-zinc-800 bg-zinc-900/70 p-2 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900/80 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200 transition"
         >
           <LogOut className="h-4 w-4" />
         </button>
