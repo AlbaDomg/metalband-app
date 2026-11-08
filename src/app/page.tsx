@@ -235,10 +235,10 @@ export default function DashboardPage() {
             className="h-14 w-14 sm:h-16 sm:w-16 shrink-0 object-contain drop-shadow-[0_0_10px_rgba(249,115,22,0.45)]"
           />
           <div className="min-w-0">
-            <h1 className="font-metal text-2xl sm:text-3xl font-normal uppercase bg-gradient-to-b from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(16,185,129,0.3)] whitespace-nowrap leading-none">
-              METAL <span className="text-emerald-400">//</span> STUDIO
+            <h1 className="text-base sm:text-lg font-black tracking-[0.16em] sm:tracking-[0.2em] uppercase text-zinc-100 whitespace-nowrap">
+              METAL // STUDIO
             </h1>
-            <p className="mt-1 text-[10px] sm:text-[11px] text-zinc-400 tracking-wider uppercase">
+            <p className="mt-0.5 text-[10px] sm:text-[11px] text-zinc-400 tracking-wider uppercase">
               Setlist, Calendario & Rider Hub
             </p>
           </div>

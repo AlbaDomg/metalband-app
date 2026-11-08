@@ -61,10 +61,10 @@ export default function LoginPage() {
             className="h-16 w-16 sm:h-20 sm:w-20 shrink-0 object-contain drop-shadow-[0_0_12px_rgba(249,115,22,0.45)]"
           />
           <div>
-            <h1 className="font-metal text-3xl sm:text-4xl font-normal uppercase bg-gradient-to-b from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(16,185,129,0.3)] leading-none">
-              METAL <span className="text-emerald-400">//</span> HUB
+            <h1 className="text-xl font-black tracking-[0.2em] uppercase text-zinc-100">
+              METAL // HUB
             </h1>
-            <p className="mt-1 text-xs uppercase tracking-widest text-zinc-400">
+            <p className="text-xs uppercase tracking-widest text-zinc-500">
               Metal Band Workspace
             </p>
           </div>

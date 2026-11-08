@@ -35,14 +35,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className="dark">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body className="min-h-screen bg-[#050507] text-zinc-100 selection:bg-emerald-500 selection:text-zinc-950">
         {/* Fondo fijo de escenario/estudio de Metal con velo oscuro para máxima legibilidad */}
         <div
