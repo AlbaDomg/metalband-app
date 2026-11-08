@@ -13,6 +13,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.font-metal {
+  font-family: 'Metal Mania', ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.14em;
+}
+
 /* Scrollbar minimalista industrial */
 ::-webkit-scrollbar {
   width: 6px;
