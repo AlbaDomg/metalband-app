@@ -636,12 +636,12 @@ export default function AudioSection({ songId }: AudioSectionProps) {
                   )}
                 </button>
 
-                <div className="flex-1">
-                  <div className="flex items-center justify-between text-xs mb-1">
-                    <span className="font-bold text-zinc-100">
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between gap-2 text-xs mb-1">
+                    <span className="font-bold text-zinc-100 truncate">
                       {activeAudio.title}
                     </span>
-                    <span className="font-mono text-emerald-400">
+                    <span className="font-mono text-emerald-400 shrink-0">
                       {formatSeconds(currentTime)} / {formatSeconds(duration)}
                     </span>
                   </div>
@@ -660,14 +660,17 @@ export default function AudioSection({ songId }: AudioSectionProps) {
                 </div>
               </div>
 
-              <form onSubmit={handleAddComment} className="mt-4 flex gap-2">
+              <form
+                onSubmit={handleAddComment}
+                className="mt-4 flex w-full items-center gap-1.5 sm:gap-2"
+              >
                 <button
                   type="button"
                   onClick={() => setLockedTimestamp(Math.floor(currentTime))}
-                  className="flex items-center gap-1 rounded-lg border border-emerald-700/70 bg-emerald-950/50 px-2.5 py-2 font-mono text-xs font-bold text-emerald-300 shrink-0"
+                  className="flex h-9 items-center gap-1 rounded-lg border border-emerald-700/70 bg-emerald-950/50 px-2 sm:px-2.5 font-mono text-xs font-bold text-emerald-300 shrink-0"
                   title="Fijar segundo actual"
                 >
-                  <Clock className="h-3.5 w-3.5 text-emerald-400" />
+                  <Clock className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
                   {formatSeconds(
                     lockedTimestamp !== null ? lockedTimestamp : currentTime
                   )}
@@ -675,7 +678,7 @@ export default function AudioSection({ songId }: AudioSectionProps) {
 
                 <input
                   type="text"
-                  placeholder="Comentar en este segundo (ej. Meter blast beat o doblar gutural)..."
+                  placeholder="Comentar en este segundo..."
                   value={commentText}
                   onFocus={() => {
                     if (lockedTimestamp === null) {
@@ -683,12 +686,12 @@ export default function AudioSection({ songId }: AudioSectionProps) {
                     }
                   }}
                   onChange={(e) => setCommentText(e.target.value)}
-                  className="flex-1 rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-2 text-xs text-zinc-100 placeholder-zinc-500 focus:border-emerald-500 focus:outline-none"
+                  className="min-w-0 flex-1 h-9 rounded-lg border border-zinc-800 bg-zinc-950 px-2.5 sm:px-3 text-xs text-zinc-100 placeholder-zinc-500 focus:border-emerald-500 focus:outline-none"
                 />
 
                 <button
                   type="submit"
-                  className="flex items-center justify-center rounded-lg bg-emerald-500 hover:bg-emerald-400 px-3.5 py-2 text-zinc-950 transition"
+                  className="flex h-9 w-9 sm:w-auto sm:px-3.5 shrink-0 items-center justify-center rounded-lg bg-emerald-500 hover:bg-emerald-400 text-zinc-950 transition"
                 >
                   <Send className="h-4 w-4" />
                 </button>
