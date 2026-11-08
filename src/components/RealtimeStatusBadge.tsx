@@ -70,9 +70,9 @@ export default function RealtimeStatusBadge({
   return (
     <span
       title="Sincronización en vivo activa con toda la banda"
-      className="inline-flex shrink-0 whitespace-nowrap items-center gap-1 rounded-full border border-emerald-900/60 bg-emerald-950/40 px-2 py-0.5 text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-emerald-400"
+      className="inline-flex shrink-0 whitespace-nowrap items-center gap-1 rounded-full border border-emerald-900/50 bg-emerald-950/30 px-2 py-0.5 text-[8px] sm:text-[9px] font-medium uppercase tracking-wider text-emerald-400/85"
     >
-      <Radio className="h-2.5 w-2.5 animate-pulse shrink-0" />
+      <Radio className="h-2 w-2 animate-pulse shrink-0" />
       LIVE SYNC
     </span>
   );
