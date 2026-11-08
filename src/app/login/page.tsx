@@ -53,7 +53,7 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-screen flex-col justify-center px-6">
-      <div className="border border-zinc-800/80 bg-zinc-950/90 p-7 rounded-xl shadow-2xl backdrop-blur-md">
+      <div className="border border-zinc-800/80 bg-zinc-950/75 p-7 rounded-xl shadow-2xl backdrop-blur-md">
         <div className="flex items-center gap-3 mb-6">
           <img
             src="/logo.png"

@@ -257,7 +257,7 @@ export default function DashboardPage() {
       </header>
 
       {/* Navegación por Pestañas (Temas / Calendario / Rider & Archivos) */}
-      <div className="mb-6 grid grid-cols-3 gap-2 rounded-xl border border-zinc-800/80 bg-zinc-950 p-1.5">
+      <div className="mb-6 grid grid-cols-3 gap-2 rounded-xl border border-zinc-800/80 bg-zinc-950/75 backdrop-blur-md p-1.5">
         <button
           type="button"
           onClick={() => setActiveTab('songs')}
@@ -344,7 +344,7 @@ export default function DashboardPage() {
                   <Link
                     key={song.id}
                     href={`/songs/${song.id}`}
-                    className="group block rounded-xl border border-zinc-800/80 bg-zinc-950/90 p-4 transition hover:border-emerald-600/60 active:scale-[0.99]"
+                    className="group block rounded-xl border border-zinc-800/80 bg-zinc-950/75 backdrop-blur-md p-4 transition hover:border-emerald-600/60 active:scale-[0.99]"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div>

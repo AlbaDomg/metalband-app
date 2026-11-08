@@ -294,7 +294,7 @@ export default function FilesManager({
       : files.filter((f) => f.category === activeFilter);
 
   return (
-    <section className="rounded-xl border border-zinc-800/80 bg-zinc-950/90 p-4 space-y-4">
+    <section className="rounded-xl border border-zinc-800/80 bg-zinc-950/75 backdrop-blur-md p-4 space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h3 className="text-xs font-black uppercase tracking-[0.2em] text-zinc-300 flex items-center gap-2">
           <FolderOpen className="h-4 w-4 text-emerald-400" />

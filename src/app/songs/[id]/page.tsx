@@ -250,7 +250,7 @@ export default function SongDetailPage({
       </div>
 
       {/* Cabecera de la Canción y Metadatos */}
-      <div className="rounded-xl border border-zinc-800/80 bg-zinc-950/90 p-4">
+      <div className="rounded-xl border border-zinc-800/80 bg-zinc-950/75 backdrop-blur-md p-4">
         <h1 className="text-xl font-black uppercase tracking-wider text-zinc-100">
           {song.title}
         </h1>
@@ -314,7 +314,7 @@ export default function SongDetailPage({
       <StemTracker song={song} onUpdateStem={handleUpdateStem} />
 
       {/* 2. Editor de Letras + Botón Modo Teleprompter */}
-      <section className="rounded-xl border border-zinc-800/80 bg-zinc-950/90 p-4">
+      <section className="rounded-xl border border-zinc-800/80 bg-zinc-950/75 backdrop-blur-md p-4">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <FileText className="h-4 w-4 text-emerald-400" />

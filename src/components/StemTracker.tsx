@@ -69,7 +69,7 @@ export default function StemTracker({ song, onUpdateStem }: StemTrackerProps) {
   };
 
   return (
-    <section className="rounded-xl border border-zinc-800/80 bg-zinc-950/90 p-4">
+    <section className="rounded-xl border border-zinc-800/80 bg-zinc-950/75 backdrop-blur-md p-4">
       <div className="mb-3 flex items-center justify-between">
         <h3 className="text-xs font-black uppercase tracking-[0.2em] text-zinc-300">
           Stem Tracker // Estado de Pistas

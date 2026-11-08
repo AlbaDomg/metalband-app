@@ -36,8 +36,12 @@ export default function RootLayout({
   return (
     <html lang="es" className="dark">
       <body className="min-h-screen bg-[#050507] text-zinc-100 selection:bg-emerald-500 selection:text-zinc-950">
-        {/* Textura ambiental sutil superior */}
-        <div className="pointer-events-none fixed inset-x-0 top-0 h-64 bg-gradient-to-b from-emerald-950/20 via-emerald-950/5 to-transparent z-0" />
+        {/* Fondo fijo de escenario/estudio de Metal con velo oscuro para máxima legibilidad */}
+        <div
+          className="pointer-events-none fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/metal-bg.jpg')" }}
+        />
+        <div className="pointer-events-none fixed inset-0 z-0 bg-gradient-to-b from-[#050507]/75 via-[#050507]/60 to-[#050507]/85" />
         <main className="relative z-10 mx-auto max-w-2xl min-h-screen pb-20">
           {children}
         </main>

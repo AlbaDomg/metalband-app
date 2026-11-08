@@ -461,7 +461,7 @@ export default function AudioSection({ songId }: AudioSectionProps) {
   return (
     <section className="space-y-4">
       {/* Tarjeta de Subida de Audio */}
-      <div className="rounded-xl border border-zinc-800/80 bg-zinc-950/90 p-4">
+      <div className="rounded-xl border border-zinc-800/80 bg-zinc-950/75 backdrop-blur-md p-4">
         <h3 className="text-xs font-black uppercase tracking-[0.2em] text-zinc-300 mb-3 flex items-center gap-2">
           <Upload className="h-4 w-4 text-emerald-400" />
           Subir Pista / Maqueta (WAV, MP3, M4A)
@@ -566,7 +566,7 @@ export default function AudioSection({ songId }: AudioSectionProps) {
 
       {/* Lista de tomas + Reproductor + Comentarios con Timestamp */}
       {audios.length > 0 && (
-        <div className="rounded-xl border border-zinc-800/80 bg-zinc-950/90 p-4 space-y-4">
+        <div className="rounded-xl border border-zinc-800/80 bg-zinc-950/75 backdrop-blur-md p-4 space-y-4">
           <div className="space-y-1.5">
             <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">
               Archivos disponibles ({audios.length})

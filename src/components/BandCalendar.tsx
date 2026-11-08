@@ -291,7 +291,7 @@ export default function BandCalendar() {
       </div>
 
       {/* Cuadrícula Visual del Mes */}
-      <div className="rounded-xl border border-zinc-800/80 bg-zinc-950/90 p-4">
+      <div className="rounded-xl border border-zinc-800/80 bg-zinc-950/75 backdrop-blur-md p-4">
         <div className="flex items-center justify-between mb-4">
           <button
             type="button"
