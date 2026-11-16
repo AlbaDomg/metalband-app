@@ -118,6 +118,14 @@ export default function DashboardPage() {
 
     checkSessionAndFetch();
 
+    const handleVisibilityOrFocus = () => {
+      if (document.visibilityState === 'visible') {
+        checkSessionAndFetch();
+      }
+    };
+    window.addEventListener('focus', handleVisibilityOrFocus);
+    document.addEventListener('visibilitychange', handleVisibilityOrFocus);
+
     // SUSCRIPCIÓN REALTIME A LA TABLA `songs`
     const channel = supabase
       .channel('realtime-songs-dashboard')
@@ -156,6 +164,8 @@ export default function DashboardPage() {
       });
 
     return () => {
+      window.removeEventListener('focus', handleVisibilityOrFocus);
+      document.removeEventListener('visibilitychange', handleVisibilityOrFocus);
       supabase.removeChannel(channel);
     };
   }, [router]);
@@ -193,17 +203,31 @@ export default function DashboardPage() {
       return;
     }
 
-    const { error } = await supabase.from('songs').insert({
-      title: title.trim(),
-      tuning: tuning.trim() || 'Drop C',
-      tempo: Number(tempo) || 140,
-      status: 'idea',
-    });
+    const { data: inserted, error } = await supabase
+      .from('songs')
+      .insert({
+        title: title.trim(),
+        tuning: tuning.trim() || 'Drop C',
+        tempo: Number(tempo) || 140,
+        status: 'idea',
+      })
+      .select()
+      .single();
 
-    if (!error) {
-      setTitle('');
-      setShowNewModal(false);
+    if (error) {
+      alert(`Error al crear tema: ${error.message}`);
+      return;
     }
+
+    if (inserted) {
+      const added = inserted as Song;
+      setSongs((prev) =>
+        prev.some((s) => s.id === added.id) ? prev : [added, ...prev]
+      );
+    }
+
+    setTitle('');
+    setShowNewModal(false);
   };
 
   const handleSignOut = async () => {

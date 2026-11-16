@@ -122,6 +122,14 @@ export default function BandCalendar() {
 
     fetchEvents();
 
+    const handleVisibilityOrFocus = () => {
+      if (document.visibilityState === 'visible') {
+        fetchEvents();
+      }
+    };
+    window.addEventListener('focus', handleVisibilityOrFocus);
+    document.addEventListener('visibilitychange', handleVisibilityOrFocus);
+
     const channel = supabase
       .channel('realtime-band-events')
       .on(
@@ -152,6 +160,8 @@ export default function BandCalendar() {
       .subscribe();
 
     return () => {
+      window.removeEventListener('focus', handleVisibilityOrFocus);
+      document.removeEventListener('visibilitychange', handleVisibilityOrFocus);
       supabase.removeChannel(channel);
     };
   }, []);

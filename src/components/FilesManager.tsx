@@ -1,7 +1,12 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { isSupabaseConfigured, supabase } from '@/lib/supabase/client';
+import {
+  isSupabaseConfigured,
+  SUPABASE_ANON_KEY,
+  SUPABASE_URL,
+  supabase,
+} from '@/lib/supabase/client';
 import { BandFile, FileCategory } from '@/types/database';
 import {
   CheckCircle2,
@@ -108,6 +113,14 @@ export default function FilesManager({
 
     fetchFiles();
 
+    const handleVisibilityOrFocus = () => {
+      if (document.visibilityState === 'visible') {
+        fetchFiles();
+      }
+    };
+    window.addEventListener('focus', handleVisibilityOrFocus);
+    document.addEventListener('visibilitychange', handleVisibilityOrFocus);
+
     const channelName = songId
       ? `realtime-files-song-${songId}`
       : 'realtime-files-general';
@@ -140,6 +153,8 @@ export default function FilesManager({
       .subscribe();
 
     return () => {
+      window.removeEventListener('focus', handleVisibilityOrFocus);
+      document.removeEventListener('visibilitychange', handleVisibilityOrFocus);
       supabase.removeChannel(channel);
     };
   }, [songId, storageKey]);
@@ -152,8 +167,8 @@ export default function FilesManager({
       data: { session },
     } = await supabase.auth.getSession();
 
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+    const supabaseUrl = SUPABASE_URL;
+    const supabaseAnonKey = SUPABASE_ANON_KEY;
     const token = session?.access_token || supabaseAnonKey;
 
     return new Promise((resolve, reject) => {

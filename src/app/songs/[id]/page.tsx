@@ -104,6 +104,14 @@ export default function SongDetailPage({
 
     fetchSong();
 
+    const handleVisibilityOrFocus = () => {
+      if (document.visibilityState === 'visible') {
+        fetchSong();
+      }
+    };
+    window.addEventListener('focus', handleVisibilityOrFocus);
+    document.addEventListener('visibilitychange', handleVisibilityOrFocus);
+
     // SUSCRIPCIÓN REALTIME AL DETALLE DE LA CANCIÓN
     const songChannel = supabase
       .channel(`realtime-song-detail-${songId}`)
@@ -141,6 +149,8 @@ export default function SongDetailPage({
       });
 
     return () => {
+      window.removeEventListener('focus', handleVisibilityOrFocus);
+      document.removeEventListener('visibilitychange', handleVisibilityOrFocus);
       supabase.removeChannel(songChannel);
     };
   }, [songId, router]);

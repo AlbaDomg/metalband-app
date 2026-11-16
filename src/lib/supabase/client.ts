@@ -1,17 +1,22 @@
 import { createClient } from '@supabase/supabase-js';
 import { AudioComment, AudioTrack, Song } from '@/types/database';
 
-const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-const rawKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+export const SUPABASE_URL =
+  process.env.NEXT_PUBLIC_SUPABASE_URL ||
+  'https://cnzxdmwozdalbkozliko.supabase.co';
+
+export const SUPABASE_ANON_KEY =
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+  'sb_publishable_icLQljV3azyJzpE84_nKIg_H5TU7tH0';
 
 export const isSupabaseConfigured =
-  Boolean(rawUrl && rawKey) &&
-  !rawUrl.includes('tu-proyecto.supabase.co') &&
-  rawUrl.startsWith('http');
+  Boolean(SUPABASE_URL && SUPABASE_ANON_KEY) &&
+  !SUPABASE_URL.includes('tu-proyecto.supabase.co') &&
+  SUPABASE_URL.startsWith('http');
 
 export const supabase = createClient(
-  isSupabaseConfigured ? rawUrl : 'https://placeholder-project.supabase.co',
-  isSupabaseConfigured ? rawKey : 'placeholder-anon-key',
+  isSupabaseConfigured ? SUPABASE_URL : 'https://placeholder-project.supabase.co',
+  isSupabaseConfigured ? SUPABASE_ANON_KEY : 'placeholder-anon-key',
   {
     realtime: {
       params: {

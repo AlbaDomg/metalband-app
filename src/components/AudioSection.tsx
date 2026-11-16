@@ -5,6 +5,8 @@ import {
   INITIAL_DEMO_AUDIOS,
   INITIAL_DEMO_COMMENTS,
   isSupabaseConfigured,
+  SUPABASE_ANON_KEY,
+  SUPABASE_URL,
   supabase,
 } from '@/lib/supabase/client';
 import { AudioComment, AudioTrack, AudioType } from '@/types/database';
@@ -224,8 +226,8 @@ export default function AudioSection({ songId }: AudioSectionProps) {
       data: { session },
     } = await supabase.auth.getSession();
 
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+    const supabaseUrl = SUPABASE_URL;
+    const supabaseAnonKey = SUPABASE_ANON_KEY;
     const token = session?.access_token || supabaseAnonKey;
 
     return new Promise((resolve, reject) => {
