@@ -36,6 +36,8 @@ export default function SongDetailPage({
   const router = useRouter();
 
   const [song, setSong] = useState<Song | null>(null);
+  const [tuningDraft, setTuningDraft] = useState('');
+  const [tempoDraft, setTempoDraft] = useState<number | string>(140);
   const [lyricsDraft, setLyricsDraft] = useState('');
   const [isEditingLyrics, setIsEditingLyrics] = useState(false);
   const [savingLyrics, setSavingLyrics] = useState(false);
@@ -46,6 +48,8 @@ export default function SongDetailPage({
 
   const syncLocalSong = (updated: Song) => {
     setSong(updated);
+    setTuningDraft(updated.tuning || 'Drop C');
+    setTempoDraft(updated.tempo || 140);
     const saved = localStorage.getItem('abyss_songs');
     const list: Song[] = saved ? JSON.parse(saved) : INITIAL_DEMO_SONGS;
     const nextList = list.map((s) => (s.id === updated.id ? updated : s));
@@ -66,6 +70,8 @@ export default function SongDetailPage({
         return;
       }
       setSong(found);
+      setTuningDraft(found.tuning || 'Drop C');
+      setTempoDraft(found.tempo || 140);
       setLyricsDraft(found.lyrics || '');
       setSyncStatus('subscribed');
 
@@ -76,6 +82,8 @@ export default function SongDetailPage({
           ev.data.song?.id === songId
         ) {
           setSong(ev.data.song);
+          setTuningDraft(ev.data.song.tuning || 'Drop C');
+          setTempoDraft(ev.data.song.tempo || 140);
           setIsEditingLyrics((typing) => {
             if (!typing) setLyricsDraft(ev.data.song.lyrics || '');
             return typing;
@@ -99,6 +107,8 @@ export default function SongDetailPage({
 
       const loaded = data as Song;
       setSong(loaded);
+      setTuningDraft(loaded.tuning || 'Drop C');
+      setTempoDraft(loaded.tempo || 140);
       setLyricsDraft(loaded.lyrics || '');
     };
 
@@ -126,6 +136,8 @@ export default function SongDetailPage({
         (payload) => {
           const updated = payload.new as Song;
           setSong(updated);
+          setTuningDraft(updated.tuning || 'Drop C');
+          setTempoDraft(updated.tempo || 140);
           setIsEditingLyrics((currentlyTyping) => {
             if (!currentlyTyping) {
               setLyricsDraft(updated.lyrics || '');
@@ -178,6 +190,36 @@ export default function SongDetailPage({
     }
     setSong(updated);
     await supabase.from('songs').update({ status }).eq('id', song.id);
+  };
+
+  const handleSaveTuning = async () => {
+    if (!song) return;
+    const nextVal = tuningDraft.trim() || 'Drop C';
+    const updated = { ...song, tuning: nextVal };
+    if (!isSupabaseConfigured) {
+      syncLocalSong(updated);
+      return;
+    }
+    setSong(updated);
+    await supabase
+      .from('songs')
+      .update({ tuning: nextVal })
+      .eq('id', song.id);
+  };
+
+  const handleSaveTempo = async () => {
+    if (!song) return;
+    const nextVal = Number(tempoDraft) || 140;
+    const updated = { ...song, tempo: nextVal };
+    if (!isSupabaseConfigured) {
+      syncLocalSong(updated);
+      return;
+    }
+    setSong(updated);
+    await supabase
+      .from('songs')
+      .update({ tempo: nextVal })
+      .eq('id', song.id);
   };
 
   const handleSaveLyrics = async () => {
@@ -274,19 +316,15 @@ export default function SongDetailPage({
               </span>
               <input
                 type="text"
-                value={song.tuning}
-                onChange={(e) => setSong({ ...song, tuning: e.target.value })}
-                onBlur={(e) => {
-                  if (!isSupabaseConfigured) {
-                    syncLocalSong({ ...song, tuning: e.target.value });
-                    return;
+                value={tuningDraft}
+                onChange={(e) => setTuningDraft(e.target.value)}
+                onBlur={handleSaveTuning}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    (e.target as HTMLInputElement).blur();
                   }
-                  supabase
-                    .from('songs')
-                    .update({ tuning: e.target.value })
-                    .eq('id', song.id);
                 }}
-                className="w-full bg-transparent font-mono text-xs font-bold text-zinc-100 focus:outline-none"
+                className="w-full bg-transparent font-mono text-xs font-bold text-zinc-100 focus:outline-none focus:text-emerald-400"
               />
             </div>
           </div>
@@ -299,21 +337,15 @@ export default function SongDetailPage({
               </span>
               <input
                 type="number"
-                value={song.tempo}
-                onChange={(e) =>
-                  setSong({ ...song, tempo: Number(e.target.value) })
-                }
-                onBlur={(e) => {
-                  if (!isSupabaseConfigured) {
-                    syncLocalSong({ ...song, tempo: Number(e.target.value) });
-                    return;
+                value={tempoDraft}
+                onChange={(e) => setTempoDraft(e.target.value)}
+                onBlur={handleSaveTempo}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    (e.target as HTMLInputElement).blur();
                   }
-                  supabase
-                    .from('songs')
-                    .update({ tempo: Number(e.target.value) })
-                    .eq('id', song.id);
                 }}
-                className="w-full bg-transparent font-mono text-xs font-bold text-zinc-100 focus:outline-none"
+                className="w-full bg-transparent font-mono text-xs font-bold text-zinc-100 focus:outline-none focus:text-emerald-400"
               />
             </div>
           </div>
